@@ -48,8 +48,8 @@ app.get('/api', function api_index(req, res) {
   res.json({
     woopsIForgotToDocumentAllMyEndpoints: false, // done
     message: "Welcome to my personal api! Here's what you need to know!",
-    documentationUrl: "https://github.com/danfinelli1/express_self_api/README.md", // TODO
-    baseUrl: "http://YOUR-APP-NAME.herokuapp.com", // TODO
+    documentationUrl: "https://github.com/danfinelli1/express-personal-api/blob/master/README.md", // TODO
+    baseUrl: "https://boiling-bastion-91533.herokuapp.com", 
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
