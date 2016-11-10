@@ -19,7 +19,7 @@ app.use(function(req, res, next) {
  * DATABASE *
  ************/
 
-// var db = require('./models');
+ var db = require('./models');
 
 /**********
  * ROUTES *
@@ -32,10 +32,11 @@ app.use(express.static('public'));
 /*
  * HTML Endpoints
  */
+ app.get('/', function homepage(req, res) {
+   res.sendFile(__dirname + '/views/index.html');
+ });
 
-app.get('/', function homepage(req, res) {
-  res.sendFile(__dirname + '/views/index.html');
-});
+
 
 
 /*
@@ -45,16 +46,24 @@ app.get('/', function homepage(req, res) {
 app.get('/api', function api_index(req, res) {
   // TODO: Document all your api endpoints below
   res.json({
-    woopsIForgotToDocumentAllMyEndpoints: true, // CHANGE ME ;)
+    woopsIForgotToDocumentAllMyEndpoints: false, // done
     message: "Welcome to my personal api! Here's what you need to know!",
-    documentationUrl: "https://github.com/example-username/express_self_api/README.md", // CHANGE ME
-    baseUrl: "http://YOUR-APP-NAME.herokuapp.com", // CHANGE ME
+    documentationUrl: "https://github.com/danfinelli1/express_self_api/README.md", // TODO
+    baseUrl: "http://YOUR-APP-NAME.herokuapp.com", // TODO
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
-      {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
+      {method: "POST", path: "/api/strains", description: "E.g. Create a new campsite"} // CHANGE ME
     ]
   })
+});
+
+app.get('/api', function homepage(req, res) {
+  res.sendFile(__dirname + '/views/index.html');
+});
+
+app.get('/api/profile', function homepage(req, res) {
+  res.sendFile(__dirname + '/views/index.html');
 });
 
 /**********
