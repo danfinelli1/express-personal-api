@@ -62,17 +62,17 @@ app.get('/api', function api_index(req, res) {
   })
 });
 
-app.get('/api', function homepage(req, res) {
+app.get('/', function homepage(req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-app.get('/api/profile', function homepage(req, res) {
-  res.sendFile(__dirname + '/views/index.html');
-});
-
-app.get('/api/strains', function homepage(req, res) {
-  res.json(new_strains);
-});
+app.post('/api/strains', function (req, res) {
+  // create new book with form data (`req.body`)
+  var newStrain = new db.Strains({
+    title: req.body.title,
+    image: req.body.image,
+    releaseDate: req.body.releaseDate,
+  });
 
 /**********
  * SERVER *

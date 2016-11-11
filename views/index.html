@@ -21,8 +21,31 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
-          <h1>Under Construction</h1>
+          <h1>WIP</h1>
           <h4><a href="/api">Read My API Documentation</a></h4>
+          <form class="form-inline" id="newStrainForm">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" name="name" placeholder="Strain Name">
+            </div>
+            <div class="form-group">
+              <label for="tastes">Tastes</label>
+              <input type="text" class="form-control" name="tastes" placeholder="Strain Taste">
+            </div>
+            <div class="form-group">
+              <label for="outdoorGrown">Is it grown outdoors?</label>
+              <input type="boolean" class="form-control" name="outdoorGrown" placeholder="Grown Outdoors?">
+            </div>
+            <div class="form-group">
+              <label for="smellScale">Scale of 1-10. How pungent is the scent?</label>
+              <input type="number" class="form-control" name="smellScale" placeholder="Smell Scale">
+            </div>
+            <div class="form-group">
+              <label for="treats">What is it used to treat?</label>
+              <input type="text" class="form-control" name="treats" placeholder="Treats: ">
+            </div>
+            <button type="submit" class="btn btn-default">Create strain</button>
+          </form>
         </div>
       </div>
     </div>
