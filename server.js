@@ -67,7 +67,7 @@ app.get('/api/profile', function homepage(req, res) {
 });
 
 app.get('/api/strains', function homepage(req, res) {
-  res.json(__dirname + '/seed.js');
+  res.json('seed.js');
 });
 
 /**********
