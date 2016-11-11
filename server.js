@@ -32,10 +32,14 @@ app.use(express.static('public'));
 /*
  * HTML Endpoints
  */
- app.get('/', function homepage(req, res) {
-   res.sendFile(__dirname + '/views/index.html');
+ app.get('/api/strains', function (req, res) {
+   // send all books as JSON response
+   db.Strains.find().populate('strains')
+     .exec(function(err, strains) {
+       if (err) { return console.log("index error: " + err); }
+       res.json(strains);
+   });
  });
-
 
 
 
