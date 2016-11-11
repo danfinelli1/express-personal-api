@@ -53,7 +53,7 @@ app.get('/api', function api_index(req, res) {
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
-      {method: "POST", path: "/api/strains", description: "E.g. Create a new strains"} // CHANGE ME
+      {method: "GET", path: "/api/strains", description: "View strains api"} // CHANGE ME
     ]
   })
 });
@@ -66,7 +66,7 @@ app.get('/api/profile', function homepage(req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-app.post('/api/strains', function homepage(req, res) {
+app.get('/api/strains', function homepage(req, res) {
   res.json(__dirname + '/seed.js');
 });
 
