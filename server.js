@@ -49,11 +49,11 @@ app.get('/api', function api_index(req, res) {
     woopsIForgotToDocumentAllMyEndpoints: false, // done
     message: "Welcome to my personal api! Here's what you need to know!",
     documentationUrl: "https://github.com/danfinelli1/express-personal-api/blob/master/README.md", // TODO
-    baseUrl: "https://boiling-bastion-91533.herokuapp.com", 
+    baseUrl: "https://boiling-bastion-91533.herokuapp.com",
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
-      {method: "POST", path: "/api/strains", description: "E.g. Create a new campsite"} // CHANGE ME
+      {method: "POST", path: "/api/strains", description: "E.g. Create a new strains"} // CHANGE ME
     ]
   })
 });
@@ -64,6 +64,10 @@ app.get('/api', function homepage(req, res) {
 
 app.get('/api/profile', function homepage(req, res) {
   res.sendFile(__dirname + '/views/index.html');
+});
+
+app.post('/api/strains', function homepage(req, res) {
+  res.json(__dirname + '/seed.js');
 });
 
 /**********
