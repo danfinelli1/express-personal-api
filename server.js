@@ -35,15 +35,24 @@ app.use(express.static('public'));
  * HTML Endpoints
  */
 
- app.get('/', function homepage(req, res) {
-   res.sendFile(__dirname + '/views/index.html');
- });
-
-
+app.get('/', function homepage(req, res) {
+    res.sendFile(__dirname + '/views/index.html');
+});
 
 /*
+app.delete('/api/strains/:id', function (req, res) {
+// get book id from url params (`req.params`)
+console.log('strains delete', req.params);
+var bookId = req.params.id;
+// find the index of the book we want to remove
+db.Strains.findOneAndRemove({ _id: strainId }, function (err, deletedStrain) {
+res.json(deletedStrain);
+});
+});
+
  * JSON API Endpoints
  */
+
 
 app.get('/api', function api_index(req, res) {
     // TODO: Document all your api endpoints below
@@ -70,27 +79,36 @@ app.get('/api', function api_index(req, res) {
     });
 });
 
-app.get('/api/profile', function profile(req, res){
-  res.json({
-          name: "Daniel Finelli",
-          githubLink: "http://github.com/danfinelli1",
-          githubProfileImage: '',
-          personalSiteLink: '',//TODO
-          currentCity: "San Francisco",
-          isAwake: true,
-          familyMembers: [
-            { name: 'Maria Finelli', relationship: 'sister' }
-          ],
-          pets: null
-        });
+app.get('/api/strains/:id', function (req, res) {
+  db.Strains.findOne({_id: req.params._id }, function(err, data) {
+    res.json(data);
+  });
 });
 
-app.get('/api/strains', function(req, res){
-  db.Strains.find()
-    .exec(function(err, strains) {
-      if (err) { return console.log("index error: " + err); }
-      res.json(strains);
-  });
+app.get('/api/profile', function profile(req, res) {
+    res.json({
+        name: "Daniel Finelli",
+        githubLink: "http://github.com/danfinelli1",
+        githubProfileImage: '',
+        personalSiteLink: '', //TODO
+        currentCity: "San Francisco",
+        isAwake: true,
+        familyMembers: [{
+            name: 'Maria Finelli',
+            relationship: 'sister'
+        }],
+        pets: null
+    });
+});
+
+app.get('/api/strains', function(req, res) {
+    db.Strains.find()
+        .exec(function(err, strains) {
+            if (err) {
+                return console.log("index error: " + err);
+            }
+            res.json(strains);
+        });
 });
 
 app.post('/api/strains', function(req, res) {
@@ -110,6 +128,19 @@ app.post('/api/strains', function(req, res) {
         // send back the strain!
         res.json(strains);
     });
+    app.delete('/api/strains/:id', function(req, res) {
+        // get book id from url params (`req.params`)
+        console.log('strains delete', req.params);
+        var strainId = req.params.id;
+        // find the index of the book we want to remove
+        db.Strains.findOneAndRemove({
+            _id: strainId
+        }, function(err, deletedStrain) {
+            res.json(deletedStrain);
+        });
+    });
+
+
 });
 /**********
  * SERVER *

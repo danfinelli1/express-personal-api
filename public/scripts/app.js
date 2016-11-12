@@ -2,7 +2,6 @@ console.log("Sanity Check: JS is working!");
 $(document).ready(function() {
 
     var template;
-    var $strainList = $('#strainTarget');
     var allStrains = [];
 
     var $strainsList = $('#strainTarget');
@@ -29,7 +28,14 @@ $(document).ready(function() {
     $('#newStrainForm').on('submit', function(event) {
         event.preventDefault();
         var showData = $('#show-data');
-        console.log('it got here');
+          console.log('new book serialized', $(this).serializeArray());
+          $.ajax({
+            method: 'POST',
+            url: '/api/books',
+            data: $(this).serializeArray(),
+            success: newStrainSuccess
+          });
+        });
 
         $.ajax({
             url: '/api/strains',
@@ -55,10 +61,16 @@ $(document).ready(function() {
         render();
     }
 
+    function newStrainSuccess(json) {
+      $('#newStrainForm').val('');
+      allStrains.push(json);
+      render();
+    }
+
     function deleteStrainSuccess(json) {
       var strain = json;
       console.log(strain);
-      var strainId = stain._id;
+      var strainId = strain._id;
       console.log('delete book', strainId);
       // find the book with the correct ID and remove it from our allBooks array
       for(var index = 0; index < allStrains.length; index++) {
@@ -69,4 +81,3 @@ $(document).ready(function() {
       }
       render();
     }
-});
