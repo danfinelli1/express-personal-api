@@ -128,6 +128,7 @@ app.post('/api/strains', function(req, res) {
         // send back the strain!
         res.json(strains);
     });
+  });
     app.delete('/api/strains/:id', function(req, res) {
         // get book id from url params (`req.params`)
         console.log('strains delete', req.params);
@@ -141,7 +142,6 @@ app.post('/api/strains', function(req, res) {
     });
 
 
-});
 /**********
  * SERVER *
  **********/

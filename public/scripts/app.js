@@ -21,8 +21,10 @@ $(document).ready(function() {
         $.ajax({
             method: 'DELETE',
             url: '/api/strains/' + $(this).attr('data-id'),
-            success: deleteStrainSuccess
+            success: deleteStrainSuccess,
+            error: deleteStrainError
         });
+        render();
     });
 
     $('#newStrainForm').on('submit', function(event) {
@@ -31,20 +33,19 @@ $(document).ready(function() {
           console.log('new book serialized', $(this).serializeArray());
           $.ajax({
             method: 'POST',
-            url: '/api/books',
+            url: '/api/strains',
             data: $(this).serializeArray(),
             success: newStrainSuccess
           });
         });
 
-        $.ajax({
-            url: '/api/strains',
-            method: 'POST',
-            data: $('#newStrainForm').serialize(),
-            dataType: 'json',
-            handleSuccess
-        });
-    });
+        // $.ajax({
+        //     url: '/api/strains',
+        //     method: 'POST',
+        //     data: $('#newStrainForm').serialize(),
+        //     dataType: 'json',
+        //     success: handleSuccess
+        // });
 
     function render() {
         $strainsList.empty();
@@ -61,9 +62,9 @@ $(document).ready(function() {
         render();
     }
 
-    function newStrainSuccess(json) {
+    function newStrainSuccess(data) {
       $('#newStrainForm').val('');
-      allStrains.push(json);
+      allStrains.push(data);
       render();
     }
 
@@ -80,4 +81,9 @@ $(document).ready(function() {
         }
       }
       render();
+      //return allStrains;
     }
+    function deleteStrainError() {
+      console.log('error on line 2');
+    }
+  });
