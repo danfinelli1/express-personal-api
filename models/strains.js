@@ -4,9 +4,9 @@ var mongoose = require('mongoose'),
 var StrainsSchema = new Schema({
   name: String,
   tastes: String,
-  outdoorGrown: Boolean,
   smellScale: Number,
-  treats: String
+  treats: String,
+  img_url: String
 });
 
 var Strains = mongoose.model('Strains', StrainsSchema);

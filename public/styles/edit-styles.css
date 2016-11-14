@@ -9,8 +9,8 @@ img {
   height: 100px;
   position: absolute;
   float: left;
-  padding-top: 15px;
-  padding-left: 15px;
+  padding-left: 10px;
+  padding-top: 10px;
 }
 
 h1 {
@@ -23,10 +23,11 @@ h1 {
 }
 
 a {
+  padding-top: 20px;
   padding: 10px;
-  background-color: rgb(95,115,255);
-  color: black;
   margin: 20px;
+  color: black;
+  background-color: rgb(95,115,255);
   border: solid 2px black;
 }
 
@@ -39,10 +40,10 @@ p {
 
 .btn {
   padding: 10px;
+  background-color: rgb(12,43,255);
 }
 
 .form-group {
-  background-color: rgb(95,115,255);
+  background-color: rgb(12,43,255);
   padding: 20px;
-  border: solid 2px black;
 }

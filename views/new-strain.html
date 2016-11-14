@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Add a New Strain!</title>
+
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/styles.css">
+
+    <!-- VENDOR SCRIPTS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+
+    <!-- APPLICATION SCRIPTS -->
+    <script src="/scripts/new-strain.js"></script>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/api">API</a>
+        <a href="/api/strains/new">New Strain</a>
+        <a href="/api/strains/edit-mode">Edit Strains</a>
+    </nav>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+                <h1>Add a new Strain!</h1>
+                <form class="form-inline" id="newStrainForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" name="name" placeholder="Strain Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="tastes">Tastes</label>
+                        <input type="text" class="form-control" name="tastes" placeholder="Strain Taste">
+                    </div>
+                    <div class="form-group">
+                        <label for="smellScale">Scale of 1-10. How pungent is the scent?</label>
+                        <input type="number" class="form-control" name="smellScale" placeholder="Smell Scale">
+                    </div>
+                    <div class="form-group">
+                        <label for="treats">What is it used to treat?</label>
+                        <input type="text" class="form-control" name="treats" placeholder="Treats: ">
+                    </div>
+                    <div class="form-group">
+                        <label for="treats">What is image url?</label>
+                        <input type="text" class="form-control" name="img_url" placeholder="http://www. ">
+                    </div>
+                    <button type="submit" class="btn btn-default">Create strain</button>
+                </form>
+        </div>
+    </div>
+</body>
+
+</html>

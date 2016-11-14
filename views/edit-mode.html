@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Home</title>
+
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/edit-styles.css">
+
+    <!-- VENDOR SCRIPTS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+
+    <!-- APPLICATION SCRIPTS -->
+    <script src="/scripts/edit-mode.js"></script>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/api">API</a>
+        <a href="/api/strains/new">New Strain</a>
+        <a href="/api/strains/edit-mode">Edit Strains</a>
+    </nav>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h1>Edit the Medical Marijuana Strains!</h1>
+
+                <div id='strainTarget'>
+                    <script id="strains-template" type="text/x-handlebars-template">
+                        {{#each strains}}
+                        <hr>
+                        <img src="/images/{{img_url}}" data-id="{{_id}}"></img>
+                        <p>
+                            <b>{{name}}</b>
+                            <br> It tastes {{tastes}}.
+                            <br> On a scale of 1-10, {{name}}, smells at the strength of about a(n) {{smellScale}}.
+                            <br> {{name}} is used to treat {{treats}}.
+                            <br>
+                            <form class="form-inline" id="newStrainForm">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control" name="name" placeholder="{{name}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="tastes">Tastes</label>
+                                    <input type="text" class="form-control" name="tastes" placeholder="{{tastes}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="smellScale">Scale of 1-10. How pungent is the scent?</label>
+                                    <input type="number" class="form-control" name="smellScale" placeholder="{{smellScale}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="treats">What is it used to treat?</label>
+                                    <input type="text" class="form-control" name="treats" placeholder="{{treats}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="treats">What is image url?</label>
+                                    <input type="text" class="form-control" name="img_url" placeholder="{{img_url}}">
+                                </div>
+                                <button type="button" name="button" class="deleteBtn btn" data-id={{_id}}>Delete</button>
+                                <button type="button" name="button" class="updateBtn btn" data-id={{_id}}>Update</button>
+                        </p>
+                        {{/each}}
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
